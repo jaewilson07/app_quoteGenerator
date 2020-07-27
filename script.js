@@ -18,11 +18,12 @@ function removeLoadingSpinner() {
 }
 
 const getQuoteFromAPI = async () => {
+  const CORS_URL = 'https://cors-anywhere.herokuapp.com/';
   const REAL_URL =
     'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
   const API_URL = 'http://localhost:3050/magic';
   try {
-    const resp = await fetch(REAL_URL);
+    const resp = await fetch(CORS_URL + REAL_URL);
     const data = await resp.json();
     return data;
   } catch (err) {
